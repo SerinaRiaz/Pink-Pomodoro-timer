@@ -20,6 +20,5 @@
 - **CSS** 
 - **JavaScript**
 
-Final notepad project link : https://serinariaz.github.io/My-melody-notepad/
-
+Final project link : https://serinariaz.github.io/Pink-Pomodoro-timer/
   
