@@ -1,0 +1,291 @@
+:root{
+    --pink-deep:   #ff8fc0;
+    --pink-mid:    #ffb0d3;
+    --pink-soft:   #ffd7e9;
+    --pink-pale:   #fff0f6;
+    --white:       #ffffff;
+    --shadow-pink: rgba(255, 206, 232);
+    --radius-pill: 999px;
+  }
+  
+  *{ box-sizing: border-box; }
+  
+  html, body{
+    margin: 0;
+    min-height: 100%;
+  }
+  
+  body{
+    font-family: 'Jua', sans-serif;
+    background: #ffeaf4; /* fallback while background.png loads / on tall screens */
+  }
+  
+  .page{
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 20px 160px;
+    background: url('assets/background.jpg') top center / cover no-repeat;
+  }
+  
+  .footer{
+    position: absolute;
+    bottom: 12px;
+    font-size: 0.85rem;
+    color: var(--pink-deep);
+    margin: 100px 370px 0;
+    href_color: var(--pink);
+  }
+  .mascot{
+    width: 180px;
+    height: 160px;
+    object-fit: contain;
+    margin: 95px 0 -20px;
+    filter: drop-shadow(0 12px 18px rgba(255,120,180,0.35));
+  }
+  
+  .center-content{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modes{
+    display: flex;
+    gap: 14px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .mode-btn{
+    font-family: 'Jua', sans-serif;
+    font-size: 1.15rem;
+    color: var(--white);
+    background: rgba(246, 194, 226, 0.36);
+    border: 2px solid rgba(255, 206, 232);
+    border-radius: var(--radius-pill);
+    padding: 11px 24px;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+  }
+  
+  .mode-btn:hover{ transform: translateY(-1px); }
+  
+  .mode-btn.is-active{
+    background: var(--pink-deep);
+    border-color: var(--pink-deep);
+  }
+  
+
+  .time-display{
+    font-size: clamp(4.2rem, 17vw, 6rem);
+    color: var(--white);
+    letter-spacing: 2px;
+    text-shadow: 0 6px 18px rgba(255, 206, 232);
+    margin-bottom: 24px;
+    line-height: 1;
+  }
+  
+  .controls{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .start-btn{
+    font-family: 'Jua', sans-serif;
+    font-size: 1.3rem;
+    color: var(--pink-deep);
+    background: var(--white);
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 16px 42px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px -8px rgba(255,143,192,0.6);
+    transition: transform 0.15s ease, background 0.2s ease;
+  }
+  
+  .start-btn:hover{ transform: translateY(-1px); }
+  .start-btn.is-running{
+    background: var(--pink-deep);
+    color: var(--white);
+  }
+  
+  .icon-btn{
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 209, 236, 0.5);
+    color: var(--white);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.4s ease;
+  }
+  
+  .icon-btn:hover{ background: rgba(255,255,255,0.7); }
+  #resetBtn.is-spinning i{ animation: spin 0.5s ease; }
+  @keyframes spin{ to{ transform: rotate(-180deg); } }
+  
+  
+  .music-widget{
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    width: min(300px, calc(100% - 48px));
+  }
+  
+  .music-widget__frame{
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--pink-deep);
+    box-shadow: 0 14px 28px -14px var(--shadow-pink);
+    line-height: 0; /* kill the iframe's inline-element gap */
+  }
+  
+  .music-widget__frame iframe{
+    display: block;
+
+  }
+  
+  .music-widget__swap{
+    position: absolute;
+    top: -35px;
+    right: -18px;
+    z-index: 2;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    background: #ffc6e9; /* spotify green so it reads as "the spotify button" at a glance */
+    color: var(--white);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 14px -4px rgba(0,0,0,0.35);
+  }
+  .music-widget__swap:hover{ transform: scale(1.06); }
+  
+  @media (max-width: 460px){
+    .music-widget{
+      position: static;
+      margin-top: 28px;
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+  
+
+  
+  .settings-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(120, 40, 80, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+  }
+  
+  .settings-overlay[hidden]{
+    display: none;
+  }
+  
+  .settings{
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    background: var(--pink-soft);
+    border-radius: 26px;
+    padding: 24px;
+    box-shadow: 0 24px 50px -20px rgba(120, 20, 70, 0.55);
+  }
+  
+  .settings__close{
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: var(--pink-deep);
+    color: var(--white);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .settings__label{
+    display: block;
+    color: var(--pink-deep);
+    font-size: 1.05rem;
+    margin: 14px 0 8px;
+  }
+  .settings__label:first-of-type{ margin-top: 4px; }
+  
+  .settings__input{
+    width: 100%;
+    font-family: 'Jua', sans-serif;
+    font-size: 1.4rem;
+    color: var(--white);
+    background: var(--pink-mid);
+    border: none;
+    border-radius: 14px;
+    padding: 10px 16px;
+    outline: none;
+  }
+  .settings__input:focus{ box-shadow: 0 0 0 3px rgba(255, 206, 232); }
+  
+  .settings__actions{
+    display: flex;
+    gap: 12px;
+    margin-top: 22px;
+  }
+  
+  .settings__btn{
+    flex: 1;
+    font-family: 'Jua', sans-serif;
+    font-size: 1rem;
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 12px 0;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.2s ease;
+  }
+  .settings__btn:hover{ transform: translateY(-1px); }
+  
+  .settings__btn--ghost{
+    background: var(--pink-mid);
+    color: var(--white);
+  }
+  
+  .settings__btn--solid{
+    background: var(--white);
+    color: var(--pink-mid);
+  }
+  .settings__btn--solid.is-saved{
+    background: var(--pink-deep);
+    color: var(--white);
+  }
+  
+  @media (max-width: 380px){
+    .time-display{ letter-spacing: 0; }
+  }

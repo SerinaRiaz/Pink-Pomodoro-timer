@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pomodoro timer</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page" id="page">
+
+  <img class="mascot" src="assets/melody.png" alt="" id="mascot">
+
+  <div class="center-content">
+    <div class="modes" role="tablist">
+      <button class="mode-btn is-active" data-mode="pomodoro" role="tab" aria-selected="true">pomodoro</button>
+      <button class="mode-btn" data-mode="short" role="tab" aria-selected="false">short break</button>
+      <button class="mode-btn" data-mode="long" role="tab" aria-selected="false">long break</button>
+    </div>
+
+    <div class="time-display" id="timeDisplay">25:00</div>
+
+    <div class="controls">
+      <button class="start-btn" id="startBtn">start</button>
+      <button class="icon-btn" id="resetBtn" aria-label="reset timer" title="reset timer">
+        <i class='bx bx-reset'></i>
+      </button>
+      <button class="icon-btn" id="settingsBtn" aria-label="open settings" title="settings">
+        <i class='bx bxs-cog'></i>
+      </button>
+    </div>
+  </div>
+
+ 
+  <div class="music-widget">
+    <button class="music-widget__swap" id="spotifyBtn" title="link a different spotify playlist" aria-label="link a different spotify playlist">
+      <i class='bx bxl-spotify'></i>
+    </button>
+    <div class="music-widget__frame">
+      <iframe id="spotifyFrame"
+        src=""
+        width="100%" height="152" frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"></iframe>
+    </div>
+  </div>
+
+</div>
+
+<div class="settings-overlay" id="settingsOverlay" hidden>
+  <aside class="settings" id="settingsPanel">
+    <button class="settings__close" id="closeSettingsBtn" aria-label="close settings">
+      <i class='bx bx-x'></i>
+    </button>
+
+    <label class="settings__label" for="pomodoroInput">pomodoro</label>
+    <input class="settings__input" type="number" id="pomodoroInput" min="1" max="180" value="25">
+
+    <label class="settings__label" for="shortInput">short break</label>
+    <input class="settings__input" type="number" id="shortInput" min="1" max="60" value="5">
+
+    <label class="settings__label" for="longInput">long break</label>
+    <input class="settings__input" type="number" id="longInput" min="1" max="90" value="15">
+
+    <div class="settings__actions">
+      <button class="settings__btn settings__btn--ghost" id="resetAllBtn">Reset all</button>
+      <button class="settings__btn settings__btn--solid" id="saveAllBtn">Save all</button>
+    </div>
+  </aside>
+</div>
+<h6 class="footer">made with ♡ by <a href="https://github.com/SerinaRiaz" target="_blank">Serina ༊*·˚</a></h6>
+<script src="script.js"></script>
+</body>
+</html>
